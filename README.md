@@ -1,1 +1,10 @@
 # ML-Paper-Summarizer
+With well over a million academic papers published every year (https://www.smithsonianmag.com/smart-news/half-academic-studies-are-never-read-more-three-people-180950222/), it can be fairly said that academic literature is one of the realms of big data. And with big data comes big problems.
+
+For researchers trying to conduct literature reviews and summarize the papers in a field or for new entrants to the field who might need to not only read hundreds of influential papers from the past but also keep abreast of the new works being published in their area, the sheer amount of papers is a barrier. And every academic field, not just machine learning, faces a similar problem.
+
+It would be useful, then to have a model which, given an academic paper, could quickly summarize what the paper is about. Of course, many papers have abstracts, but abstracts are not universal across academic fields. Additionally, we might need to read or summarize works which do not have abstracts: book chapters or whole books, transcripts of talks or lectures, lengthy blogs, and even specific sections of a paper. Thus it would be useful to have a model which can generate summaries of highly technical text.
+
+Here I train a T5 transformer on approximately 36,000 machine learning and artificial intelligence papers. The T5 transformer was already pre-trained on large amounts of general text data (Common Crawl's web crawl corpus https://wandb.ai/mukilan/T5_transformer/reports/Exploring-Google-s-T5-Text-To-Text-Transformer-Model--VmlldzoyNjkzOTE2#the-t5-paper). Here I fine-tune it by setting the abstracts of each of the papers as the label, so that the T5 learns to write summaries of roughly the length and specificity of an abstract.
+
+The 36,000 machine learning and AI papers were scraped from arXiv, using the metadata in the arXiv dataset (https://www.kaggle.com/datasets/Cornell-University/arxiv?select=arxiv-metadata-oai-snapshot.json). The scraping project was lengthy and is not included here. The articles and their abstracts were saved in a series of 10 JSON files.
